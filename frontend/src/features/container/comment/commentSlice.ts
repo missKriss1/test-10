@@ -11,12 +11,11 @@ export interface ICommentState {
  const initialState: ICommentState ={
   comments: [],
    loading: false,
-   addLoading: false,
+   addLoading: false
  }
 
 export const selectComment = (state:RootState ) => state.comments.comments;
 export const selectLoadingCom = (state:RootState ) => state.comments.loading;
-export const selectAddCom = (state:RootState ) => state.comments.addLoading;
 
 
 export const commentSlice = createSlice({

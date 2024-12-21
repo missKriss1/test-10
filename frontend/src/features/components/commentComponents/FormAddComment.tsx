@@ -11,7 +11,6 @@ import { addNewComments, fetchCommentByNewsId } from '../../container/comment/co
  }
 
 const FromAddComment: React.FC <Props> = ({newsId}) => {
-  console.log(newsId)
   const initialState: ICommentMutation ={
     author: '',
     comment: '',
@@ -26,7 +25,6 @@ const FromAddComment: React.FC <Props> = ({newsId}) => {
   }
 
   const onSubmitForm = async (e: React.FormEvent) => {
-    console.log(newsId)
     e.preventDefault();
     await dispatch(addNewComments(form))
     await dispatch(fetchCommentByNewsId(newsId))
