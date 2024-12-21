@@ -8,7 +8,7 @@ import FullNewsItem from '../../components/newsComponents/FullNewsItem.tsx';
 import { Typography, Box, Card, IconButton } from '@mui/material';
 import FormAddComment from '../../components/commentComponents/FormAddComment.tsx';
 import { deleteOneComment, fetchCommentByNewsId } from '../comment/commentThunk.ts';
-import { selectComment } from '../comment/commentSlice.ts';
+import { selectComment, selectLoadingCom } from '../comment/commentSlice.ts';
 
 const FullNews = () => {
   const { id } = useParams() as { id: string };
@@ -16,6 +16,7 @@ const FullNews = () => {
   const news = useAppSelector(selectNew);
   const newsFetch = useAppSelector(selectNewsFetchOne);
   const comments = useAppSelector(selectComment);
+  const addCom = useAppSelector(selectLoadingCom);
 
   useEffect(() => {
     dispatch(fetchOneNew(id));
@@ -50,80 +51,84 @@ const FullNews = () => {
               </Typography>
             )}
 
-            {comments.length > 0 ? (
-              <Box sx={{ marginTop: 4 }}>
-                <Typography variant="h3" component="h2" sx={{ marginBottom: 2 }}>
-                  Comments
-                </Typography>
-                {comments.map((comment) => (
-                  <Card
-                    key={comment.id}
-                    sx={{
-                      display: 'flex',
-                      height: 100,
-                      boxShadow: 3,
-                      borderRadius: 2,
-                      overflow: 'hidden',
-                      marginBottom: 2,
-                      flexDirection: 'row',
-                    }}
-                  >
-                    <Box
+            {addCom ? (
+              <Spinner />
+            ) : (
+              comments.length > 0 ? (
+                <Box sx={{ marginTop: 4 }}>
+                  <Typography variant="h3" component="h2" sx={{ marginBottom: 2 }}>
+                    Comments
+                  </Typography>
+                  {comments.map((comment) => (
+                    <Card
+                      key={comment.id}
                       sx={{
-                        flex: '0 0 auto',
-                        padding: 2,
                         display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'center',
+                        height: 100,
+                        boxShadow: 3,
+                        borderRadius: 2,
+                        overflow: 'hidden',
+                        marginBottom: 2,
+                        flexDirection: 'row',
                       }}
                     >
-                      <Typography variant="h4" component="h2" gutterBottom>
-                        {comment.author}:
-                      </Typography>
-                    </Box>
-
-                    <Box
-                      sx={{
-                        flex: 1,
-                        padding: 2,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      <Typography
-                        variant="body1"
+                      <Box
                         sx={{
-                          fontSize: '1.2rem',
+                          flex: '0 0 auto',
+                          padding: 2,
+                          display: 'flex',
+                          flexDirection: 'column',
+                          justifyContent: 'center',
                         }}
                       >
-                        {comment.comment}
-                      </Typography>
-                    </Box>
+                        <Typography variant="h4" component="h2" gutterBottom>
+                          {comment.author}:
+                        </Typography>
+                      </Box>
 
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        justifyContent: 'flex-end',
-                        alignItems: 'center',
-                        paddingRight: 2,
-                        paddingTop: 2,
-                      }}
-                    >
-                      <IconButton
-                        sx={{ width: 100 }}
-                        onClick={() => deleteComment(comment.id)}
+                      <Box
+                        sx={{
+                          flex: 1,
+                          padding: 2,
+                          display: 'flex',
+                          flexDirection: 'column',
+                          justifyContent: 'center',
+                        }}
                       >
-                        Delete
-                      </IconButton>
-                    </Box>
-                  </Card>
-                ))}
-              </Box>
-            ) : (
-              <Typography variant="body2" color="text.secondary">
-                No comments yet.
-              </Typography>
+                        <Typography
+                          variant="body1"
+                          sx={{
+                            fontSize: '1.2rem',
+                          }}
+                        >
+                          {comment.comment}
+                        </Typography>
+                      </Box>
+
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          justifyContent: 'flex-end',
+                          alignItems: 'center',
+                          paddingRight: 2,
+                          paddingTop: 2,
+                        }}
+                      >
+                        <IconButton
+                          sx={{ width: 100 }}
+                          onClick={() => deleteComment(comment.id)}
+                        >
+                          Delete
+                        </IconButton>
+                      </Box>
+                    </Card>
+                  ))}
+                </Box>
+              ) : (
+                <Typography variant="body2" color="text.secondary">
+                  No comments yet.
+                </Typography>
+              )
             )}
           </>
         )}

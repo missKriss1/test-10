@@ -1,6 +1,6 @@
 import { IComment } from '../../../types';
 import { createSlice } from '@reduxjs/toolkit';
-import { addNewComments, fetchCommentByNewsId } from './commentThunk.ts';
+import { addNewComments, deleteOneComment, fetchCommentByNewsId } from './commentThunk.ts';
 import { RootState } from '../../../app/store.ts';
 
 export interface ICommentState {
@@ -43,6 +43,15 @@ export const commentSlice = createSlice({
         state.comments = comments;
       })
       .addCase(fetchCommentByNewsId.rejected, (state) => {
+        state.loading = false;
+      })
+     .addCase(deleteOneComment.pending, (state) => {
+       state.loading = true;
+      })
+      .addCase(deleteOneComment.fulfilled, (state) => {
+        state.loading = false;
+      })
+      .addCase(deleteOneComment.rejected, (state) => {
         state.loading = false;
       });
   }

@@ -24,7 +24,6 @@ const initialState: NewsState = {
 export const selectNews = (state:RootState ) => state.news.news;
 export const selectNew = (state:RootState ) => state.news.new;
 export const selectNewsFetch = (state:RootState ) => state.news.newsFetching;
-export const selectNewsCreat= (state:RootState ) => state.news.isCreating;
 export const selectNewsDelete= (state:RootState ) => state.news.isDeleting;
 export const selectNewsFetchOne = (state:RootState ) => state.news.oneNewsFetching;
 
