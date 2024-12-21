@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "newsId": "06f2baa6-88ce-4352-bae9-055c2af76564",
+    "author": "user1",
+    "comment": "comment1",
+    "id": "1cd34b08-9d37-4812-96a8-d5dcccb3778a"
+  },
+  {
+    "newsId": "06f2baa6-88ce-4352-bae9-055c2af76564",
+    "author": "user1",
+    "comment": "comment1",
+    "id": "72b4a0cb-4f3a-4cde-ad41-28646efbc06c"
+  },
+  {
+    "newsId": "06f2baa6-88ce-4352-bae9-055c2af76564",
+    "author": "user2",
+    "comment": "comment2",
+    "id": "2d26896b-b594-4215-b525-0691f3a9edb5"
+  }
+]
