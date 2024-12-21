@@ -7,7 +7,7 @@ import Spinner from '../../../components/Spinner.tsx';
 import FullNewsItem from '../../components/newsComponents/FullNewsItem.tsx';
 import { Typography, Box, Card, IconButton } from '@mui/material';
 import FormAddComment from '../../components/commentComponents/FormAddComment.tsx';
-import { fetchCommentByNewsId } from '../comment/commentThunk.ts';
+import { deleteOneComment, fetchCommentByNewsId } from '../comment/commentThunk.ts';
 import { selectComment } from '../comment/commentSlice.ts';
 
 const FullNews = () => {
@@ -22,7 +22,12 @@ const FullNews = () => {
     dispatch(fetchCommentByNewsId(id));
   }, [dispatch, id]);
 
-  const
+  const deleteComment = async (commentId: string) => {
+    if (commentId) {
+      await dispatch(deleteOneComment(commentId));
+      await dispatch(fetchCommentByNewsId(id));
+    }
+  };
 
   return (
     <Box
@@ -107,6 +112,7 @@ const FullNews = () => {
                     >
                       <IconButton
                         sx={{ width: 100 }}
+                        onClick={() => deleteComment(comment.id)}
                       >
                         Delete
                       </IconButton>
