@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../../app/hooks.ts';
-import { INewsMutation } from '../../types';
-import { addNews, fetchAllNews } from '../newsThunk.ts';
-import AddForm from '../components/AddForm.tsx';
+import { useAppDispatch } from '../../../app/hooks.ts';
+import { INewsMutation } from '../../../types';
+import { addNews, fetchAllNews } from './newsThunk.ts';
+import AddForm from '../../components/newsComponents/AddForm.tsx';
 
 const NewNews = () => {
   const navigate = useNavigate();

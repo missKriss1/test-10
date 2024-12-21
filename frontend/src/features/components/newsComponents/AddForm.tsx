@@ -1,4 +1,4 @@
-import { INewsMutation } from '../../types';
+import { INewsMutation } from '../../../types';
 import { useState } from 'react';
 import * as React from 'react';
 import Grid from '@mui/material/Grid2';

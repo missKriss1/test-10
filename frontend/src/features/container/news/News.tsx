@@ -1,11 +1,11 @@
-import { useAppDispatch, useAppSelector } from '../../app/hooks.ts';
-import { selectNews, selectNewsFetch } from '../newsSlice.ts';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks.ts';
+import { selectNews, selectNewsFetch } from './newsSlice.ts';
 import { useEffect } from 'react';
-import { fetchAllNews } from '../newsThunk.ts';
-import Spinner from '../../components/Spinner.tsx';
+import { fetchAllNews } from './newsThunk.ts';
+import Spinner from '../../../components/Spinner.tsx';
 import { Box, Button, Typography } from '@mui/material';
 import { NavLink } from 'react-router-dom';
-import NewsItem from '../components/NewsItem.tsx';
+import NewsItem from '../../components/newsComponents/NewsItem.tsx';
 
 const News = () => {
   const dispatch = useAppDispatch();
@@ -40,7 +40,6 @@ const News = () => {
                   key={n.id}
                   id={n.id}
                   title={n.title}
-                  description={n.description}
                   image={n.image}
                   date={n.date}
                 />

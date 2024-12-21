@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { INews, INewsMutation } from '../types';
-import axiosApi from '../axiosApi.ts';
+import { INews, INewsMutation } from '../../../types';
+import axiosApi from '../../../axiosApi.ts';
 
 export const addNews = createAsyncThunk<void, INewsMutation>(
   'news/addNews',

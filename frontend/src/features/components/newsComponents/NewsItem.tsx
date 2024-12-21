@@ -1,23 +1,22 @@
 import * as React from 'react';
 import { Card, CardContent, CardMedia, Typography, Button, Box } from '@mui/material';
 import zaglushka from '/src/assets/zaglushka.png';
-import { apiUrl } from '../../globalConstant.ts';
+import { apiUrl } from '../../../globalConstant.ts';
 import { NavLink } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../app/hooks.ts';
-import { selectNewsDelete } from '../newsSlice.ts';
-import { deleteOneNews, fetchAllNews } from '../newsThunk.ts';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks.ts';
+import { selectNewsDelete } from '../../container/news/newsSlice.ts';
+import { deleteOneNews, fetchAllNews } from '../../container/news/newsThunk.ts';
 import LoadingButton from '@mui/lab/LoadingButton';
 import dayjs from 'dayjs';
 
 interface Props {
   id: string;
   title: string;
-  description: string;
   image: string | null | undefined;
   date: string;
 }
 
-const NewsItem: React.FC<Props> = ({ title, description, image, id, date }) => {
+const NewsItem: React.FC<Props> = ({ title, image, id, date }) => {
   const dispatch = useAppDispatch();
   const deleteNews = useAppSelector(selectNewsDelete);
 
@@ -59,9 +58,6 @@ const NewsItem: React.FC<Props> = ({ title, description, image, id, date }) => {
         <CardContent sx={{ flex: 1 }}>
           <Typography variant="h6" component="div" gutterBottom>
             {title}
-          </Typography>
-          <Typography variant="body2" sx={{ marginBottom: 1 }}>
-            {description}
           </Typography>
           <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic' }}>
             {dayjs(date).format('YYYY-MM-DD HH:mm:ss')}

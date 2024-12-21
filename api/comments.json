@@ -16,5 +16,29 @@
     "author": "user2",
     "comment": "comment2",
     "id": "2d26896b-b594-4215-b525-0691f3a9edb5"
+  },
+  {
+    "newsId": "3671298a-159e-49dd-98af-591d682638a9",
+    "author": "kris",
+    "comment": "hjkl",
+    "id": "89cbd6f3-11bf-4659-8fde-6b7e91423ce6"
+  },
+  {
+    "newsId": "9987855d-22d9-4f8d-b0be-cfa1f925de22",
+    "author": "kris",
+    "comment": "hello",
+    "id": "a7fa31d6-8d07-49b1-96b5-96df7b7f289f"
+  },
+  {
+    "newsId": "3671298a-159e-49dd-98af-591d682638a9",
+    "author": "test",
+    "comment": "rest",
+    "id": "eec3c927-0860-4504-a763-3cde747b9bf5"
+  },
+  {
+    "newsId": "3671298a-159e-49dd-98af-591d682638a9",
+    "author": "test",
+    "comment": "test",
+    "id": "7aa2d07d-83bd-4f09-953f-608ec9d4c7f0"
   }
 ]
